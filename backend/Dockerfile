@@ -20,9 +20,9 @@ FROM mcr.microsoft.com/dotnet/sdk:10.0 AS backend-builder
 WORKDIR /src
 
 # Copy solution and project files for caching restore layer
-COPY backend/FitnessFlow.sln ./
+COPY backend/FitnessFlow.sln ./backend/
 COPY backend/FitnessFlow.Api/FitnessFlow.Api.csproj ./backend/FitnessFlow.Api/
-RUN dotnet restore backend/FitnessFlow.sln
+RUN dotnet restore ./backend/FitnessFlow.sln
 
 # Copy the rest of the backend source files
 COPY backend/ ./backend/
@@ -37,9 +37,9 @@ RUN dotnet publish backend/FitnessFlow.Api/FitnessFlow.Api.csproj -c Release -o 
 FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS runtime
 WORKDIR /app
 
-# Set port environment to 5091 (matching the default port)
-ENV ASPNETCORE_URLS=http://+:5091
-EXPOSE 5091
+# Set port environment to 80
+ENV ASPNETCORE_URLS=http://+:80
+EXPOSE 80
 
 # Copy build artifacts from publisher stage
 COPY --from=backend-builder /app/publish .
