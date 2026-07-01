@@ -1,0 +1,66 @@
+# ==========================================
+# Fitness Flow Project Gitignore
+# Covers both .NET (Backend) & Node/React (Frontend)
+# ==========================================
+
+# --- Node / React (Frontend) ---
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/.eslintcache
+
+# --- .NET (Backend) ---
+# Build results
+[Dd]ebug/
+[Dd]ebugPS/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Bb]in/
+[Oo]bj/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio / VS Code Cache
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.opened
+*.VisualState
+ClientBin/
+[Aa]pp[Dd]ata/
+
+# Rider Cache
+.idea/
+*.sln.iml
+
+# Secrets & Local Configurations
+# Keep appsettings.json, but ignore user secrets
+backend/FitnessFlow.Api/UserSecrets/
+secrets.json
+.microsoft.visualstudio.secrets.json
+
+# --- OS / System ---
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+*.bak
