@@ -527,7 +527,7 @@ export const WorkoutTimer: React.FC<WorkoutTimerProps> = ({ workoutId, onSession
           </div>
 
           {/* Interactive controls */}
-          <div style={{ display: 'flex', gap: '14px', zIndex: 1 }}>
+          <div style={{ display: 'flex', gap: '14px', zIndex: 1, width: '100%', justifyContent: 'center' }} className="flex-mobile-column">
             {isResting ? (
               <>
                 <button className="btn btn-secondary" onClick={resetExerciseTimer} style={{ padding: '12px' }}>
@@ -558,7 +558,7 @@ export const WorkoutTimer: React.FC<WorkoutTimerProps> = ({ workoutId, onSession
                 <button
                   className="btn btn-primary"
                   onClick={handleCompleteSet}
-                  style={{ padding: '14px 40px', fontSize: '1rem', background: 'linear-gradient(135deg, var(--primary) 0%, #7c3aed 100%)' }}
+                  style={{ padding: '14px 40px', fontSize: '1rem', background: 'linear-gradient(135deg, var(--primary) 0%, #7c3aed 100%)', width: '100%', justifyContent: 'center' }}
                 >
                   <Check size={18} />
                   Concluir Série {activeEx?.setsCompleted + 1}
@@ -719,16 +719,19 @@ export const WorkoutTimer: React.FC<WorkoutTimerProps> = ({ workoutId, onSession
           <button
             className="btn btn-primary"
             onClick={handleFinishWorkout}
+            disabled={loading}
             style={{ 
               padding: '14px', 
               width: '100%', 
               fontSize: '1.05rem', 
               background: 'linear-gradient(135deg, var(--success) 0%, #059669 100%)', 
-              boxShadow: '0 4px 14px 0 rgba(16, 185, 129, 0.3)' 
+              boxShadow: '0 4px 14px 0 rgba(16, 185, 129, 0.3)',
+              opacity: loading ? 0.7 : 1,
+              cursor: loading ? 'not-allowed' : 'pointer'
             }}
           >
             <Save size={18} />
-            Finalizar e Salvar Treino
+            {loading ? 'Salvando...' : 'Finalizar e Salvar Treino'}
           </button>
         </div>
       </div>

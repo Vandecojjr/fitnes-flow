@@ -36,6 +36,7 @@ namespace FitnessFlow.Api.Endpoints
             if (userId == null) return Results.Unauthorized();
 
             IQueryable<WorkoutSession> query = db.WorkoutSessions
+                .AsNoTracking()
                 .Include(ws => ws.Exercises);
 
             // Admins can see all, users only see theirs
@@ -60,6 +61,7 @@ namespace FitnessFlow.Api.Endpoints
             if (userId == null) return Results.Unauthorized();
 
             var activeSession = await db.WorkoutSessions
+                .AsNoTracking()
                 .Include(ws => ws.Exercises)
                 .FirstOrDefaultAsync(ws => ws.UserId == userId.Value && ws.CompletedAt == null);
 
@@ -151,7 +153,14 @@ namespace FitnessFlow.Api.Endpoints
                 }
             }
 
-            await db.SaveChangesAsync();
+            try
+            {
+                await db.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                return Results.BadRequest(new { message = $"Erro ao salvar no banco de dados: {ex.InnerException?.Message ?? ex.Message}" });
+            }
 
             var reloadedSession = await db.WorkoutSessions
                 .Include(s => s.Exercises)

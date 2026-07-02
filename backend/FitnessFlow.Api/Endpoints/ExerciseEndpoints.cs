@@ -29,6 +29,7 @@ namespace FitnessFlow.Api.Endpoints
         private static async Task<IResult> GetExercisesAsync(FitnessFlowDbContext db)
         {
             var exercises = await db.Exercises
+                .AsNoTracking()
                 .OrderBy(e => e.Name)
                 .ToListAsync();
             return Results.Ok(exercises);

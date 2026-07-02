@@ -36,6 +36,7 @@ namespace FitnessFlow.Api.Endpoints
             }
 
             var users = await db.Users
+                .AsNoTracking()
                 .OrderByDescending(u => u.CreatedAt)
                 .Select(u => new UserDto(u.Id, u.Username, u.Email, u.Role, u.CreatedAt))
                 .ToListAsync();

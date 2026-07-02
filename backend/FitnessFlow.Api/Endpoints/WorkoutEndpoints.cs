@@ -36,6 +36,7 @@ namespace FitnessFlow.Api.Endpoints
             if (userId == null) return Results.Unauthorized();
 
             IQueryable<Workout> query = db.Workouts
+                .AsNoTracking()
                 .Include(w => w.Exercises)
                 .ThenInclude(we => we.Exercise);
 
@@ -62,6 +63,7 @@ namespace FitnessFlow.Api.Endpoints
             if (userId == null) return Results.Unauthorized();
 
             var workout = await db.Workouts
+                .AsNoTracking()
                 .Include(w => w.Exercises)
                 .ThenInclude(we => we.Exercise)
                 .FirstOrDefaultAsync(w => w.Id == id);
