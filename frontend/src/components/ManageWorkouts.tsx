@@ -286,7 +286,7 @@ export const ManageWorkouts: React.FC = () => {
           background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(4px)',
           display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000, padding: '20px'
         }}>
-          <div className="glass-premium" style={{ width: '100%', maxWidth: '500px', padding: '30px' }}>
+          <div className="glass-premium responsive-modal-body">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
               <h3 style={{ fontSize: '1.3rem' }}>Novo Exercício na Biblioteca</h3>
               <button onClick={() => setIsCreatingExercise(false)} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer' }}>
@@ -333,7 +333,7 @@ export const ManageWorkouts: React.FC = () => {
           background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(4px)',
           display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 900, padding: '20px'
         }}>
-          <div className="glass-premium" style={{ width: '100%', maxWidth: '800px', maxHeight: '90vh', overflowY: 'auto', padding: '30px' }}>
+          <div className="glass-premium modal-container-large">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
               <h3 style={{ fontSize: '1.3rem' }}>Montar Nova Planilha de Treino</h3>
               <button onClick={() => setIsCreatingWorkout(false)} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer' }}>
@@ -413,32 +413,32 @@ export const ManageWorkouts: React.FC = () => {
                             </button>
                           </div>
 
-                          <div style={{ flex: 1, minWidth: '150px' }}>
+                          <div style={{ flex: 1, minWidth: '120px' }}>
                             <span style={{ fontWeight: 600 }}>{exInfo?.name || 'Exercício'}</span>
                           </div>
 
-                          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                            <div style={{ width: '70px' }}>
+                          <div className="exercise-param-grid">
+                            <div>
                               <label style={{ fontSize: '0.7rem' }}>Séries</label>
                               <input type="number" value={we.sets} onChange={(e) => handleUpdateWorkoutExerciseField(index, 'sets', parseInt(e.target.value) || 1)} min="1" style={{ padding: '6px' }} />
                             </div>
-                            <div style={{ width: '70px' }}>
+                            <div>
                               <label style={{ fontSize: '0.7rem' }}>Reps</label>
                               <input type="number" value={we.reps} onChange={(e) => handleUpdateWorkoutExerciseField(index, 'reps', parseInt(e.target.value) || 0)} min="0" style={{ padding: '6px' }} />
                             </div>
-                            <div style={{ width: '80px' }}>
+                            <div>
                               <label style={{ fontSize: '0.7rem' }}>Carga (kg)</label>
                               <input type="number" value={we.weight !== undefined ? we.weight : ''} onChange={(e) => handleUpdateWorkoutExerciseField(index, 'weight', parseFloat(e.target.value) || undefined)} placeholder="Meta kg" style={{ padding: '6px' }} />
                             </div>
-                            <div style={{ width: '80px' }}>
+                            <div>
                               <label style={{ fontSize: '0.7rem' }}>Tempo (seg)</label>
                               <input type="number" value={we.durationSeconds !== undefined ? we.durationSeconds : ''} onChange={(e) => handleUpdateWorkoutExerciseField(index, 'durationSeconds', parseInt(e.target.value) || undefined)} placeholder="Ex: 60" style={{ padding: '6px' }} />
                             </div>
-                            <div style={{ width: '80px' }}>
+                            <div>
                               <label style={{ fontSize: '0.7rem' }}>Rest Set (s)</label>
                               <input type="number" value={we.restBetweenSetsSeconds} onChange={(e) => handleUpdateWorkoutExerciseField(index, 'restBetweenSetsSeconds', parseInt(e.target.value) || 0)} min="0" style={{ padding: '6px' }} />
                             </div>
-                            <div style={{ width: '80px' }}>
+                            <div>
                               <label style={{ fontSize: '0.7rem' }}>Rest Ex (s)</label>
                               <input type="number" value={we.restAfterExerciseSeconds} onChange={(e) => handleUpdateWorkoutExerciseField(index, 'restAfterExerciseSeconds', parseInt(e.target.value) || 0)} min="0" style={{ padding: '6px' }} />
                             </div>

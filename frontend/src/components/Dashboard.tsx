@@ -248,7 +248,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onStartWorkout, onNavigate
                       <h4 style={{ fontSize: '1.15rem', color: '#ffffff' }}>{workout.name}</h4>
                       <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginTop: '2px' }}>{workout.description || 'Sem descrição.'}</p>
                     </div>
-                    <div style={{ display: 'flex', gap: '10px' }}>
+                    <div style={{ display: 'flex', gap: '10px' }} className="flex-mobile-column">
                       <button
                         className="btn btn-secondary"
                         onClick={() => handleOpenWeightAdjust(workout)}
@@ -363,7 +363,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onStartWorkout, onNavigate
           background: 'rgba(0,0,0,0.8)', backdropFilter: 'blur(5px)',
           display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000, padding: '20px'
         }}>
-          <div className="glass-premium" style={{ width: '100%', maxWidth: '600px', padding: '30px', maxHeight: '90vh', overflowY: 'auto' }}>
+          <div className="glass-premium responsive-modal-body">
             
             {/* Modal Header */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>

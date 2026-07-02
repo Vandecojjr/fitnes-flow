@@ -170,10 +170,26 @@ export default function App() {
       {/* Main Container Layout */}
       <div style={{ flex: 1, display: 'flex', position: 'relative' }}>
         
+        {/* Mobile Sidebar Backdrop overlay */}
+        {sidebarOpen && (
+          <div 
+            onClick={() => setSidebarOpen(false)}
+            style={{
+              position: 'fixed',
+              top: 0, left: 0, right: 0, bottom: 0,
+              background: 'rgba(0,0,0,0.45)',
+              backdropFilter: 'blur(4px)',
+              zIndex: 98
+            }}
+            className="md-hide-menu"
+          />
+        )}
+        
         {/* Navigation Sidebar */}
         <aside 
           className={`glass sidebar-nav ${sidebarOpen ? 'open' : ''}`}
           style={{
+            zIndex: 99,
             width: '260px',
             borderRight: '1px solid var(--border-color)',
             borderTop: 'none', borderBottom: 'none', borderLeft: 'none', borderRadius: 0,
